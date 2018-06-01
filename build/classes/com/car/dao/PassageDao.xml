@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace表示命名空间 -->
+<mapper namespace="com.car.dao.PassageDao">
+
+	<select id="findById" resultType="com.car.po.Passage" parameterType="String">
+		select * from passage where psId=#{psId}
+	</select>
+
+	<select id="addPassage" resultType="com.car.po.Passage">
+		insert into passage (psTitle,psContent,opName,psImg) values (#{psTitle},#{psContent},#{opName},#{psImg})
+	</select>
+
+	<select id="queryAll" resultType="com.car.po.Passage">
+		select * from passage
+	</select>
+	
+	<select id="deletePassage" resultType="com.car.po.Passage">
+		delete from passage where psId=#{psId}
+	</select>
+	
+	<select id="updatePassage" resultType="com.car.po.Passage">
+		update passage set psTitle=#{psTitle},opName=#{opName},psContent=#{psContent},psImg=#{psImg} where psId = #{psId}
+	</select>
+	
+	<select id="findOPpassage" resultType="com.car.po.Passage">
+		select * from passage where opName=#{opName}
+	</select>
+	
+</mapper>

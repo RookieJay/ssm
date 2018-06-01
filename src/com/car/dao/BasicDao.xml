@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace表示命名空间 -->
+<mapper namespace="com.car.dao.BasicDao">
+
+	<!-- 查询所有用户 -->
+	<select id="queryAll" resultType="com.car.po.Basic">
+		select * from basic
+	</select>
+
+	<!-- 根据id查找单条基本信息 -->
+	<select id="findById" resultType="com.car.po.Basic">
+		select * from basic where id = #{id}
+	</select>
+	
+	<!-- 根据id修改用户信息 -->
+	<select id="update" resultType="com.car.po.Basic">
+		update basic set name=#{name},
+		category=#{category},color=#{color},price=#{price},
+		description=#{description},swept=#{swept},launchdate=#{launchdate},appearance=#{appearance},trim=#{trim}
+		where id=#{id}
+	</select>
+	
+	<!-- 新增用户 -->
+	<select id="add" resultType="com.car.po.Basic">
+		insert into basic(name,category,color,price,description,swept,launchdate,appearance,trim) 
+		values(#{name},#{category},#{color},#{price},#{description},#{swept},#{launchdate},#{appearance},#{trim})
+	</select>
+	
+	<!-- 删除用户-->
+	<select id="delete" resultType="com.car.po.Basic" >
+		delete from basic where id = #{id}
+	</select>
+	
+	<select id="findPart" resultType="com.car.po.Basic" parameterType="String">
+		<!-- SELECT * FROM basic WHERE  name LIKE '%'#{name}'%'  -->
+		SELECT * FROM basic WHERE  name LIKE concat(concat('%',#{name}),'%')
+		
+	</select>
+</mapper>

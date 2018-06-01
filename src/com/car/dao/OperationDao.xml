@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace表示命名空间 -->
+<mapper namespace="com.car.dao.OperationDao">
+
+	<!-- 查询所有用户 -->
+	<select id="findOp" resultType="com.car.po.Operation" >
+		select * from operation 
+	</select>
+	
+	<select id="findOpById" resultType="com.car.po.Operation">
+		select * from operation where opId = #{opId}
+	</select>
+	
+</mapper>

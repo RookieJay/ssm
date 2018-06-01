@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace表示命名空间 -->
+<mapper namespace="com.car.dao.UserDao">
+
+	<!-- 查询所有用户 -->
+	<select id="queryAllUser" resultType="com.car.po.User">
+		select * from user
+	</select>
+
+	<!-- 根据邮箱名和密码匹配用户 -->
+	<select id="findUser" resultType="com.car.po.User">
+		select * from user where email = #{email} and userpwd = #{userPwd}
+	</select>
+	
+	<!-- 根据id查找单个用户 -->
+	<select id="findByUserId" resultType="com.car.po.User">
+		select * from user where userid = #{userId}
+	</select>
+	
+	<!-- 根据id修改用户信息 -->
+	<select id="updateById" resultType="com.car.po.User">
+		update user set username = #{userName}, userpwd = #{userPwd}, email = #{email}, sex = #{sex}, tel = #{tel} where userid = #{userid}
+	</select>
+	
+	<!-- 新增用户 -->
+	<select id="addUser" resultType="com.car.po.User">
+		INSERT INTO user(username,userpwd,email,sex,tel) VALUES(#{userName},#{userPwd},#{email},#{sex},#{tel})
+	</select>
+	
+	<!-- 邮箱名查重 -->
+	<select id="queryEmail" resultType="com.car.po.User" parameterType="String">
+		 select * from user where email="${email}"
+	</select>
+	
+	<!-- 删除用户-->
+	<select id="deleteById" resultType="com.car.po.User" parameterType="int">
+		delete from user where userid=#{userId}
+	</select>
+	
+</mapper>

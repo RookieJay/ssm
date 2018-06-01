@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace表示命名空间 -->
+<mapper namespace="com.car.dao.ReviewDao">
+
+	<select id="findAll" resultType="com.car.po.Review" parameterType="int">
+		select review.* from basic JOIN review ON (basic.id=review.id) where basic.id =#{id}; 
+	</select>
+
+	<select id="insert" resultType="com.car.po.Review">
+		insert into review (nickname,content,date,marks) values (#{nickname},#{content},#{date},#{marks})
+	</select>
+</mapper>

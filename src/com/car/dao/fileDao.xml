@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper  
+    namespace="com.car.dao.fileDao">  
+  
+    <resultMap id="fileBean" type="com.car.dao.fileDao">  
+        <id column="ID" property="id" jdbcType="INTEGER" />  
+        <result column="FILENAME" property="fileName" jdbcType="VARCHAR" />  
+        <result column="TESTA" property="testa" javaType="byte[]" jdbcType="BLOB" typeHandler="org.apache.ibatis.type.BlobTypeHandler" />  
+        <result column="FILESTREAM" property="fileStream" javaType="byte[]" jdbcType="BLOB" typeHandler="org.apache.ibatis.type.BlobTypeHandler" />  
+    </resultMap>    
+      
+    <insert id="saveFileInfo" parameterType="java.util.HashMap">  
+    INSERT INTO BLOBTEST(FILENAME, FILESTREAM)  
+    VALUES(#{fileName}, #{byt, javaType=byte[], jdbcType=BLOB, typeHandler=org.apache.ibatis.type.BlobTypeHandler})  
+    </insert>  
+  
+    <select id="getFileByPk" resultMap="fileBean" parameterType="int">  
+      SELECT * FROM BLOBTEST WHERE ID=${value}  
+     </select>  
+</mapper>  

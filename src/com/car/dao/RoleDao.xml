@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace表示命名空间 -->
+<mapper namespace="com.car.dao.RoleDao">
+	
+<!-- 	 <resultMap type="Role" id="role">
+		<result property="roleName" column="rolename" />
+		<result property="roleId" column="roleid" />
+		
+	</resultMap> 
+	 -->
+	
+	<!-- 根据用户id查找角色名-->
+	<select id="queryAllRoleUser" resultType="com.car.po.Role">
+		 select * from user,role where user.roleid=role.roleid and userid=#{userId}
+	</select>
+	
+	<!-- =查找所有角色-->
+	<select id="queryRole" resultType="com.car.po.Role">
+		 select * from role
+	</select>
+	
+</mapper>

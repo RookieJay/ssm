@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper  
+    namespace="com.car.dao.ApplicationDao">  
+  
+    <select id="insert" resultType="com.car.po.Application">  
+      insert into applicantion(appName,appEmail,appTel,appThoughts) values(#{appName},#{appEmail},#{appTel},#{thoughts})
+     </select>  
+</mapper>  
